@@ -71,6 +71,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);m
   border:1px solid var(--border2);border-radius:20px;
   padding:2rem 2rem 1.75rem;
   box-shadow:0 32px 64px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.03);
+  overflow:hidden;
 }
 
 /* separador no topo do card */
@@ -98,11 +99,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);m
 .login-input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(29,158,117,0.12)}
 .login-input::placeholder{color:var(--text3)}
 
-.pin-row{display:flex;gap:8px}
+.pin-row{display:flex;gap:6px;width:100%}
 .pin-inp{
-  flex:1;padding:13px 0;border-radius:11px;
+  flex:1;min-width:0;padding:13px 0;border-radius:11px;
   border:1px solid var(--border2);background:var(--dark3);
-  color:var(--text);font-size:22px;font-weight:700;text-align:center;
+  color:var(--text);font-size:20px;font-weight:700;text-align:center;
   outline:none;transition:border-color 0.2s,box-shadow 0.2s;font-family:'DM Sans',sans-serif;
 }
 .pin-inp:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(29,158,117,0.12)}
@@ -336,7 +337,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);m
       <div class="nav-item active" onclick="nav('home')"><div class="nav-dot" style="background:#1D9E75"></div>Início</div>
       <div class="nav-sec">Apps</div>
       <div class="nav-item" onclick="nav('precojusto')"><div class="nav-dot" style="background:#34D399"></div>PreçoJusto</div>
-      <div class="nav-item" onclick="nav('condopay')"><div class="nav-dot" style="background:#3B82F6"></div>CondoPay <span class="p-gray pill" style="font-size:9px;margin-left:auto">Em breve</span></div>
+      <div class="nav-item" onclick="nav('condopay')"><div class="nav-dot" style="background:#3B82F6"></div>CondoPay <span class="nav-badge" style="background:#3B82F6">DEV</span></div>
       <div class="nav-sec">Gestão</div>
       <div class="nav-item" onclick="nav('financeiro')"><div class="nav-dot" style="background:#F59E0B"></div>Financeiro</div>
       <div class="nav-item" onclick="nav('fornecedores')"><div class="nav-dot" style="background:#8B5CF6"></div>Fornecedores</div>
@@ -440,12 +441,151 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);m
 
     <!-- CONDOPAY -->
     <div class="page" id="page-condopay">
-      <div class="topbar"><div><div class="page-title">CondoPay</div><div class="page-sub">Em desenvolvimento</div></div></div>
-      <div class="card" style="text-align:center;padding:4rem 2rem">
-        <div style="font-size:56px;margin-bottom:1rem">🏢</div>
-        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px">CondoPay em breve</div>
-        <div style="font-size:13px;color:var(--text2)">Quando o app estiver ativo, o painel aparece aqui automaticamente.</div>
+      <div class="topbar">
+        <div>
+          <div class="page-title">CondoPay</div>
+          <div class="page-sub">Gestão de condomínios · Em desenvolvimento ativo</div>
+        </div>
+        <span class="pill p-blue" style="font-size:12px;padding:6px 14px">⚙ Em construção</span>
       </div>
+
+      <!-- STATUS DO PROJETO -->
+      <div class="card" style="background:rgba(59,130,246,0.06);border-color:rgba(59,130,246,0.25);margin-bottom:1.25rem">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#3B82F6,#93C5FD);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:#fff;flex-shrink:0">CP</div>
+          <div style="flex:1">
+            <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;margin-bottom:3px">CondoPay — App de gestão de condomínios</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.6">Stack: React + Vite · Supabase · Tailwind · Recharts · html2pdf · React Router v7. Módulos identificados: Dashboard, Cobranças, Moradores, Unidades, Despesas, Negociação, Demonstrativo, Comunicados, Conta Digital.</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#3B82F6">~60%</div>
+            <div style="font-size:11px;color:var(--text2)">dev concluído (est.)</div>
+          </div>
+        </div>
+        <!-- barra de progresso -->
+        <div class="pbar" style="margin-top:14px;height:6px">
+          <div class="pf pf-b" style="width:60%"></div>
+        </div>
+      </div>
+
+      <!-- MÉTRICAS PROJETADAS -->
+      <div style="font-size:10px;font-weight:700;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px">Projeções para lançamento · dados estimados</div>
+      <div class="metrics" style="margin-bottom:1.5rem">
+        <div class="mcard mc-blue"><div class="m-label">Condomínios-alvo (ano 1)</div><div class="m-val">30</div><div class="m-delta d-neu">meta de lançamento</div></div>
+        <div class="mcard mc-green"><div class="m-label">Receita potencial</div><div class="m-val">R$2.700</div><div class="m-delta d-neu">30 × R$89–R$149/mês</div></div>
+        <div class="mcard mc-purple"><div class="m-label">Unidades gerenciadas</div><div class="m-val">~900</div><div class="m-delta d-neu">30 condos × 30u média</div></div>
+        <div class="mcard mc-amber"><div class="m-label">Moradores cadastrados</div><div class="m-val">~1.800</div><div class="m-delta d-neu">2 por unidade (est.)</div></div>
+      </div>
+
+      <!-- MÓDULOS DO APP -->
+      <div class="card">
+        <div class="card-head">
+          <div><div class="card-title">Módulos identificados no app</div><div class="card-sub">Baseado nas rotas do App.jsx</div></div>
+          <span class="pill p-blue">11 módulos</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px">
+          <div style="background:var(--dark3);border:1px solid rgba(29,158,117,0.3);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">📊</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Dashboard</div>
+            <div style="font-size:11px;color:var(--text2)">Visão geral do condomínio</div>
+            <div style="margin-top:8px"><span class="pill p-green" style="font-size:10px">Previsto</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(29,158,117,0.3);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">💳</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Cobranças</div>
+            <div style="font-size:11px;color:var(--text2)">Taxas, boletos e PIX</div>
+            <div style="margin-top:8px"><span class="pill p-green" style="font-size:10px">Previsto</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(29,158,119,0.3);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">👥</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Moradores</div>
+            <div style="font-size:11px;color:var(--text2)">Cadastro e perfis</div>
+            <div style="margin-top:8px"><span class="pill p-green" style="font-size:10px">Previsto</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(59,130,246,0.25);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">🏠</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Unidades</div>
+            <div style="font-size:11px;color:var(--text2)">Apartamentos e blocos</div>
+            <div style="margin-top:8px"><span class="pill p-blue" style="font-size:10px">Em dev</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(59,130,246,0.25);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">📉</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Despesas</div>
+            <div style="font-size:11px;color:var(--text2)">Contas e gastos do condo</div>
+            <div style="margin-top:8px"><span class="pill p-blue" style="font-size:10px">Em dev</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(59,130,246,0.25);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">🤝</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Negociação</div>
+            <div style="font-size:11px;color:var(--text2)">Acordos de inadimplência</div>
+            <div style="margin-top:8px"><span class="pill p-blue" style="font-size:10px">Em dev</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(59,130,246,0.25);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">📄</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Demonstrativo</div>
+            <div style="font-size:11px;color:var(--text2)">Relatórios em PDF</div>
+            <div style="margin-top:8px"><span class="pill p-blue" style="font-size:10px">Em dev</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">📢</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Comunicados</div>
+            <div style="font-size:11px;color:var(--text2)">Avisos aos moradores</div>
+            <div style="margin-top:8px"><span class="pill p-amber" style="font-size:10px">Planejado</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">🏦</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Conta Digital</div>
+            <div style="font-size:11px;color:var(--text2)">Financeiro integrado</div>
+            <div style="margin-top:8px"><span class="pill p-amber" style="font-size:10px">Planejado</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">🔐</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Auth + Onboarding</div>
+            <div style="font-size:11px;color:var(--text2)">Login, cadastro e setup</div>
+            <div style="margin-top:8px"><span class="pill p-gray" style="font-size:10px">Base</span></div>
+          </div>
+          <div style="background:var(--dark3);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:12px">
+            <div style="font-size:18px;margin-bottom:6px">⚙️</div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px">Configurações</div>
+            <div style="font-size:11px;color:var(--text2)">Perfil e preferências</div>
+            <div style="margin-top:8px"><span class="pill p-gray" style="font-size:10px">Base</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRÓXIMOS PASSOS -->
+      <div class="grid2">
+        <div class="card">
+          <div class="card-head"><div class="card-title">Próximos marcos</div></div>
+          <div class="alert-item">
+            <div class="adot a-info"></div>
+            <div style="flex:1"><div class="a-text">Finalizar módulo de Cobranças</div><div class="a-sub">Geração de boletos via Efí Bank + PIX automático por unidade</div></div>
+          </div>
+          <div class="alert-item">
+            <div class="adot a-info"></div>
+            <div style="flex:1"><div class="a-text">Módulo Demonstrativo (PDF)</div><div class="a-sub">html2pdf.js já na stack — relatório mensal para síndicos</div></div>
+          </div>
+          <div class="alert-item">
+            <div class="adot a-warn"></div>
+            <div style="flex:1"><div class="a-text">Conta Digital integrada</div><div class="a-sub">Separar saldo do condomínio da conta pessoal do síndico</div></div>
+          </div>
+          <div class="alert-item" style="border-bottom:none">
+            <div class="adot" style="background:var(--text3)"></div>
+            <div style="flex:1"><div class="a-text">Beta com 1º condomínio piloto</div><div class="a-sub">Teste real antes do lançamento público</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div class="card-title">Stack técnica</div></div>
+          <div class="fin-row"><span class="fin-label">Frontend</span><span style="color:var(--text);font-weight:600;font-size:12px">React 19 + Vite 7 + Tailwind 4</span></div>
+          <div class="fin-row"><span class="fin-label">Backend / DB</span><span style="color:var(--text);font-weight:600;font-size:12px">Supabase (Auth + Postgres)</span></div>
+          <div class="fin-row"><span class="fin-label">Pagamentos</span><span style="color:var(--text);font-weight:600;font-size:12px">Efí Bank (PIX + boleto)</span></div>
+          <div class="fin-row"><span class="fin-label">Relatórios</span><span style="color:var(--text);font-weight:600;font-size:12px">html2pdf.js</span></div>
+          <div class="fin-row"><span class="fin-label">Gráficos</span><span style="color:var(--text);font-weight:600;font-size:12px">Recharts</span></div>
+          <div class="fin-row"><span class="fin-label">Telefone/validação</span><span style="color:var(--text);font-weight:600;font-size:12px">libphonenumber-js</span></div>
+          <div class="fin-row" style="border-bottom:none"><span class="fin-label">Roteamento</span><span style="color:var(--text);font-weight:600;font-size:12px">React Router v7</span></div>
+        </div>
+      </div>
+
     </div>
 
     <!-- FINANCEIRO -->
